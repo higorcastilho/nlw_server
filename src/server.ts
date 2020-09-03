@@ -5,6 +5,7 @@ dotenv.config()
 
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 const { PORT } = process.env
 
@@ -17,7 +18,6 @@ const {
 
 } = require('./routes/index')
 
-app.use(cors())
 app.use(connectionsRoutes)
 app.use(classesRoutes)
 app.use(accountsRoutes)
