@@ -9,7 +9,6 @@
   "scripts": {
     "start": "node dist/src/server.js",
     "dev": "tsnd --transpile-only --ignore-watch node_modules --respawn src/server.ts",
-    "knex:migrate": "knex --knexfile dist/knexfile.js migrate:latest",
     "knex:migrate": "knex --knexfile dist/knexfile.js migrate:rollback",
     "build": "tsc"
   },
@@ -23,6 +22,7 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
+    "@types/jsonwebtoken": "^8.5.0",
     "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",

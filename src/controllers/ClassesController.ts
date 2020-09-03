@@ -1,4 +1,4 @@
-import { Req, Res } from 'express'
+import { Request, Response } from 'express'
 import convertHourToMinutes from '../utils/convertHourToMinutes'
 
 const ClassesRepository = require('../repositories/classesRepository')
@@ -11,7 +11,7 @@ interface ScheduleItem {
 
 export default class ClassesController {
 
-	async index(req: Req, res: Res) {
+	async index(req: Request, res: Response) {
 		const filters = req.query
 
 		async function paginatedResults() {
@@ -118,13 +118,13 @@ export default class ClassesController {
 
 	}
 
-	async getClassSchedules(req: Req, res: Res) {
+	async getClassSchedules(req: Request, res: Response) {
 
 		const classSchedule = await ClassesRepository.getClassSchedules()
 		res.json(classSchedule)
 	}
 
-	async create(req: Req, res: Res) {
+	async create(req: Request, res: Response) {
 		const { subject, cost, schedule } = req.body
 		const { id } = req.params //account_id
 

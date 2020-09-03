@@ -1,9 +1,10 @@
-import hash from '../utils/hash'
+const hash = require('../utils/hash')
+import { Request, Response } from 'express'
 const AccountsRepository = require('../repositories/accountsRepository')
 
 export default class AccountsController {
 
-	async index(req, res) {
+	async index(req: Request, res: Response) {
 		try {
 			const userInfo = await AccountsRepository.index(req.params.id)
 	
@@ -40,7 +41,7 @@ export default class AccountsController {
 		}
 	}
 
-	async update(req, res) {
+	async update(req: Request, res: Response) {
 		try {
 			const { id } = req.params
 			const { name, avatar, whatsapp, bio } = req.body
@@ -60,7 +61,7 @@ export default class AccountsController {
 		}
 	}
 
-	async updateAccountData(req, res) {
+	async updateAccountData(req: Request, res: Response) {
 		try {
 
 			const { id } = req.params
@@ -81,7 +82,7 @@ export default class AccountsController {
 		}
 	}
 
-	async create(req, res) {
+	async create(req: Request, res: Response) {
 		try {
 			const { firstName, lastName, email, password } = req.body
 

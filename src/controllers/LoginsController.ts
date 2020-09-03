@@ -1,5 +1,6 @@
 import JWT from 'jsonwebtoken'
-import hash from '../utils/hash'
+import { Request, Response } from 'express'
+const hash = require('../utils/hash')
 import crypto from 'crypto'
 
 const { sendMail, verifyTransporter } =   require('../utils/forgotPasswordHandler/index.nodemailer')
@@ -7,7 +8,7 @@ const LoginsRepository = require('../repositories/loginsRepository')
 
 
 export default class LoginsController {
-	async login(req, res) {
+	async login(req: Request, res: Response) {
 		const { email, password } = req.body
 
 		const userData = await LoginsRepository.login(email)
@@ -38,7 +39,7 @@ export default class LoginsController {
 		res.json({ "type": "bearer", "token": generate })
 	}
 
-	async forgotPassword(req, res) {
+	async forgotPassword(req: Request, res: Response) {
 		const { email } = req.body
 		try {
 
@@ -65,7 +66,7 @@ export default class LoginsController {
 
 	}
 
-	async resetPassword(req, res) {
+	async resetPassword(req: Request, res: Response) {
 		const { email, password, token } = req.body
 
 		try {
@@ -95,7 +96,7 @@ export default class LoginsController {
 		}
 	}
 
-	async changePassword(req, res) {
+	async changePassword(req: Request, res: Response) {
 
 		const { email, currentPassword, newPassword } = req.body
 
