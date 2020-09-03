@@ -16,8 +16,8 @@ export default class ClassesController {
 
 		async function paginatedResults() {
 
-			const page = parseInt(req.query.page)
-			const limit = parseInt(req.query.limit)
+			const page = parseInt((req.query as any).page)
+			const limit = parseInt((req.query as any).limit)
 
 			const startIndex = ( page - 1 ) * limit
 			const endIndex = page * limit
@@ -60,8 +60,8 @@ export default class ClassesController {
 
 		async function paginatedResultsFilter() {
 
-			const page = parseInt(req.query.page)
-			const limit = parseInt(req.query.limit)
+			const page = parseInt((req.query as any).page)
+			const limit = parseInt((req.query as any).limit)
 
 			const startIndex = ( page - 1 ) * limit
 			const endIndex = page * limit

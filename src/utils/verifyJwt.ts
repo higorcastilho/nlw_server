@@ -12,7 +12,7 @@ export default routes.use(function(req: Request, res: Response, next: NextFuncti
 			if(err) {
 				return res.json({ message: 'Failed to validate token' })
 			} else {
-				req.decoded = decoded
+				(req as any).decoded = decoded
 				next()
 			}
 		})
