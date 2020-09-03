@@ -4,7 +4,6 @@ import cors from 'cors'
 dotenv.config()
 
 const app = express()
-app.use(cors())
 app.use(express.json())
 
 const { PORT } = process.env
@@ -18,6 +17,7 @@ const {
 
 } = require('./routes/index')
 
+app.use(cors())
 app.use(connectionsRoutes)
 app.use(classesRoutes)
 app.use(accountsRoutes)
