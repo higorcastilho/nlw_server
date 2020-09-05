@@ -7,8 +7,6 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-const { PORT } = process.env
-
 const { 
 
 	connectionsRoutes, 
@@ -23,6 +21,6 @@ app.use(classesRoutes)
 app.use(accountsRoutes)
 app.use(loginsRoutes)
 
-app.listen(PORT || 3333, () => {
+app.listen(process.env.PORT || 3333, () => {
 	console.log('Running on port 3333')
 })
