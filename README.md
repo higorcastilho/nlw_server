@@ -44,3 +44,5 @@ Change the scripts on package.json file to the following:
 ```
 npm run knex:migrate
 ```
+
+Now go ahead and test this API with your preferred API testing tool :) 
