@@ -96,9 +96,7 @@ export default class ClassesController {
 				results.results = await ClassesRepository.classesFilter(filters.week_day, timeInMinutes, filters.subject, limit, startIndex)
 				
 				const allClasses = await ClassesRepository.numOfClassesFilter(filters.week_day, timeInMinutes, filters.subject)
-
-				results.total = allClasses.length
-
+				results.total = allClasses.length.toString()
 				return results
 
 			} catch (err) {
@@ -125,14 +123,14 @@ export default class ClassesController {
 	}
 
 	async create(req: Request, res: Response) {
-		const { subject, cost, schedule } = req.body
-		const { id } = req.params //account_id
 
+		const { subject, cost, schedule } = req.body
+		const { id } = req.params 
 		try {
 			
 			const insertedClassesIds = await ClassesRepository.createClasses(subject, cost, id)
-
 			const class_id = insertedClassesIds[0]
+
 
 			const classSchedule = schedule.map((scheduleItem: ScheduleItem) => {
 				return {
