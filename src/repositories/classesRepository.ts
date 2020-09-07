@@ -8,15 +8,27 @@ interface ScheduleItem {
 	to: string
 }
 
-const paginatedResults = async ( limit: number, startIndex: number ) => {
+const paginatedResults = async ( limit: number, startIndex: number, account_id: number ) => {
 
+	if (account_id > 0) {
 		return await db
 			.select('*')
 			.from('classes')
+			.where('classes.account_id', '=', account_id)
 			.join('accounts', 'classes.account_id', 'accounts.id' )
 			.join('users', 'users.account_id', 'accounts.id')
 			.limit(limit)
-			.offset(startIndex)
+			.offset(startIndex)		
+	}
+
+	console.log('aaaa')
+	return await db
+		.select('*')
+		.from('classes')
+		.join('accounts', 'classes.account_id', 'accounts.id' )
+		.join('users', 'users.account_id', 'accounts.id')
+		.limit(limit)
+		.offset(startIndex)
 }
 
 const getClassSchedules = async () => {

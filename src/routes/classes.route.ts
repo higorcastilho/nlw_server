@@ -6,7 +6,7 @@ import verifyJwt from '../utils/verifyJwt'
 
 const routes = express.Router()
 
-routes.get('/classes', verifyJwt, classesController.index)
+routes.get('/classes/:account_id', verifyJwt, classesController.index)
 routes.get('/classes-schedules', verifyJwt, classesController.getClassSchedules)
 routes.post('/classes/:id', classesController.create)
 

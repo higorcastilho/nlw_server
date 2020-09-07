@@ -18,6 +18,7 @@ export default class ClassesController {
 
 			const page = parseInt((req.query as any).page)
 			const limit = parseInt((req.query as any).limit)
+			const account_id = (req.params as any).account_id
 
 			const startIndex = ( page - 1 ) * limit
 			const endIndex = page * limit
@@ -47,8 +48,8 @@ export default class ClassesController {
 
 			try {
 
-				results.results = await ClassesRepository.paginatedResults(limit, startIndex)
-
+				results.results = await ClassesRepository.paginatedResults(limit, startIndex, account_id)
+				
 				const allClasses = await ClassesRepository.numOfClasses()
 				results.total = allClasses.length.toString()
 				
