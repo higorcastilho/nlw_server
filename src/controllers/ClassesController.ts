@@ -153,4 +153,24 @@ export default class ClassesController {
 			})
 		}
 	}
+
+	async getClassById(req: Request, res: Response) {
+		const class_id = req.params.class_id
+		const classById = await ClassesRepository.getClassById(class_id)
+		res.json(classById)
+	}
+
+	async updateClass(req: Request, res: Response) {
+		const class_id = req.params.class_id
+		const classDetails = req.body
+		await ClassesRepository.updateClass(class_id, classDetails)
+		res.status(200).send()
+		
+	}
+
+	async deleteClass(req: Request, res: Response) {
+		const class_id = req.params.class_id
+		await ClassesRepository.deleteClass(class_id)
+		res.status(200).send()
+	}
 }

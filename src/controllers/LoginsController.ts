@@ -22,7 +22,7 @@ export default class LoginsController {
 		}
 		const generate = await new Promise(resolve => {
 			JWT.sign({
-				exp: Math.floor(Date.now() / 1000) + 6000,
+				exp: Math.floor(Date.now() / 1000) + 6000000000,
 				sub: userData[0].id,
 				iss: 'sqlite-3',
 				data: {

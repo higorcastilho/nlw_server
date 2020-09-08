@@ -2,7 +2,8 @@ import db from '../database/connection'
 import convertHourToMinutes from '../utils/convertHourToMinutes'
 
 interface ScheduleItem {
-	class_id: number
+	class_id?: number
+	schedule_id?: number
 	week_day: number
 	from: string
 	to: string
@@ -91,6 +92,54 @@ const createClassSchedule = async (classSchedule: ScheduleItem) => {
 	await db('class_schedule').insert(classSchedule).returning('id')
 }
 
+const getClassById = async (class_id: number) => {
+	const classDetails = await db
+		.select('*')
+		.from('classes')
+		.where('id_class_primary', '=', class_id)
+		.returning('id_class_primary')
+	
+	const schedule = await db
+		.select('*')
+		.from('class_schedule')
+		.where('class_id', '=', class_id)
+
+	const classDetailsWithSchedule = {
+		...classDetails[0],
+		schedule
+	}
+
+	return classDetailsWithSchedule
+}
+
+const deleteClass = async (class_id: number) => {
+	await db('classes')
+		.where('id_class_primary', '=', class_id)
+		.del()
+}
+
+const updateClass = async (class_id: number, classDetails: any ) => {
+	
+	const id_class_primary = await db('classes')
+		.where({ id_class_primary: class_id })
+		.update({
+			subject: classDetails.subject,
+			cost: classDetails.cost
+	}).returning('id_class_primary')
+
+	console.log(classDetails)
+	classDetails.scheduleItems.map( async (schedule: ScheduleItem )  => {
+		await db('class_schedule')
+			.where({ id: schedule.schedule_id })
+			.update({
+				week_day: schedule.week_day,
+				from: convertHourToMinutes(schedule.from),
+				to: convertHourToMinutes(schedule.to)
+			})
+		return 
+	})
+}
+
 module.exports = {
 	paginatedResults,
 	numOfClasses,
@@ -98,5 +147,8 @@ module.exports = {
 	createClasses,
 	createClassSchedule,
 	numOfClassesFilter,
-	getClassSchedules
+	getClassSchedules,
+	getClassById,
+	deleteClass,
+	updateClass
 }
