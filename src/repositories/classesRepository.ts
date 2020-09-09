@@ -9,6 +9,14 @@ interface ScheduleItem {
 	to: string
 }
 
+interface ScheduleItemForUpdate {
+	class_id?: number
+	schedule_id: number
+	week_day: number
+	from: string
+	to: string
+}
+
 const paginatedResults = async ( limit: number, startIndex: number, account_id: number ) => {
 
 	if (account_id > 0) {
@@ -126,14 +134,26 @@ const updateClass = async (class_id: number, classDetails: any ) => {
 			cost: classDetails.cost
 	}).returning('id_class_primary')
 
-	classDetails.scheduleItems.map( async (schedule: ScheduleItem )  => {
-		await db('class_schedule')
-			.where({ id: schedule.schedule_id })
-			.update({
-				week_day: schedule.week_day,
-				from: convertHourToMinutes(schedule.from),
-				to: convertHourToMinutes(schedule.to)
-			})
+	classDetails.scheduleItems.map( async (schedule: ScheduleItemForUpdate )  => {
+
+		if (schedule.schedule_id > 0) {
+			await db('class_schedule')
+				.where({ id: schedule.schedule_id })
+				.update({
+					week_day: schedule.week_day,
+					from: convertHourToMinutes(schedule.from),
+					to: convertHourToMinutes(schedule.to)
+				})
+		} else {
+			await db('class_schedule')
+				.insert({
+					week_day: schedule.week_day,
+					from: convertHourToMinutes(schedule.from),
+					to: convertHourToMinutes(schedule.to),
+					class_id
+				})
+		}
+		
 		return 
 	})
 }
