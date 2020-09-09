@@ -25,7 +25,7 @@ sudo docker container rm <the id of the container you want to remove>
 Now, running 'docker ps', you're gonna see your container nlw running up.
 
 ------------------------------------------------
-Now, you gotta have a database client compatible with Postgres. I'm using Beekeeper on Ubuntu, but you can use another one. 
+Now, you gotta have a database client compatible with Postgres. I'm using pgAdmin 4 on Ubuntu, and Beekeeper sometimes, but you can use another one. 
 Open this and create a database with a name you want.
 
 Open the folder you've just clonned and create a '.env' file on the root of the project. Copy the environment variables from '.env.example' and paste inside the '.env' file you've just created.
