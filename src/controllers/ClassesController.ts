@@ -173,4 +173,11 @@ export default class ClassesController {
 		await ClassesRepository.deleteClass(class_id)
 		res.status(200).send()
 	}
+
+	async deleteScheduleTime(req: Request, res: Response) {
+		const { schedule_id } = req.params
+		await ClassesRepository.deleteScheduleTime(schedule_id)
+		res.status(200).send()
+	}
+	
 }

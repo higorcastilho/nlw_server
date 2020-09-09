@@ -22,7 +22,6 @@ const paginatedResults = async ( limit: number, startIndex: number, account_id: 
 			.offset(startIndex)		
 	}
 
-	console.log('aaaa')
 	return await db
 		.select('*')
 		.from('classes')
@@ -127,7 +126,6 @@ const updateClass = async (class_id: number, classDetails: any ) => {
 			cost: classDetails.cost
 	}).returning('id_class_primary')
 
-	console.log(classDetails)
 	classDetails.scheduleItems.map( async (schedule: ScheduleItem )  => {
 		await db('class_schedule')
 			.where({ id: schedule.schedule_id })
@@ -140,6 +138,12 @@ const updateClass = async (class_id: number, classDetails: any ) => {
 	})
 }
 
+const deleteScheduleTime = async (schedule_id: number) => {
+	await db('class_schedule')
+		.where({ id: schedule_id })
+		.del()
+}
+
 module.exports = {
 	paginatedResults,
 	numOfClasses,
@@ -150,5 +154,6 @@ module.exports = {
 	getClassSchedules,
 	getClassById,
 	deleteClass,
-	updateClass
+	updateClass,
+	deleteScheduleTime
 }

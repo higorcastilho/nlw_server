@@ -56,7 +56,7 @@ const create = async ( firstName: string, lastName: string, email: string, passw
 
 		await db('users').insert({
 			name: 'Nome',
-			avatar: 'Avatar',
+			avatar: 'https://cdn.shopify.com/s/files/1/1061/1924/products/Nerd_with_Glasses_Emoji_2a8485bc-f136-4156-9af6-297d8522d8d1_large.png?v=1571606036',
 			whatsapp: '',
 			bio: '',
 			account_id: account_info[0]
