@@ -68,12 +68,12 @@ You're are going to fill the fields: Connection Type (Postgres), Host (localhost
 
 If you have postgres installed locally, you can use pgAdmin 4 (it's faster and lighter than Beekeeper to run on Ubuntu) to manage the database configuration. All you gotta do is create a database (you can use psql) and go to pgAdmin 4 to add a server and stablish a connection to your local network postgres.
 
-### Setting environment variables
+### :key: Setting environment variables
 
 Open the folder you've just clonned and create a '.env' file on the root of the project. Copy the environment variables from '.env.example' and paste inside the '.env' file you've just created.
 Fill the variables with the data information about the database you created.
 
-### Modifying the scripts
+### :page_facing_up: Modifying the scripts
 
 The scripts on package.json inside this repository is how it's meant to be on production. So, you'll gotta change this to the following to run the migrations on your computer:
 - {
@@ -85,7 +85,7 @@ The scripts on package.json inside this repository is how it's meant to be on pr
 
 That's all. Now you're all set to run the migration!
 
-### Running the migration
+### :running: Running the migration
 
 ```
 npm run knex:migrate
