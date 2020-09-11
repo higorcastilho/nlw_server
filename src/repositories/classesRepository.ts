@@ -88,6 +88,20 @@ const numOfClassesFilter = async (week_day: number, timeInMinutes: number, subje
 
 const createClasses = async (subject: string, cost: number, accountId: number) => {
 
+	const existentClasses = await db('classes')
+		.where('classes.account_id', '=', accountId)
+
+	const creationAuthorized = existentClasses.map( classes => {
+		if (classes.subject === subject) {
+			return 0
+		}
+		return 1
+	})
+
+	if(creationAuthorized.includes(0)) {
+		return 0
+	}
+		
 	return await db('classes').insert({
 		subject,
 		cost,
