@@ -69,12 +69,15 @@ docker run --name nlw -e POSTGRES_PASSWORD=123456 -p 5432:5432 -d postgres
 
 You're are going to fill the fields: Connection Type (Postgres), Host (localhost), Port (5432), User (postgres) and Password (123456).
 
-On Query tab, type: **CREATE DABATASE proffy;**
-Now that you have a database, you can go to the step **Running the migratiob**.
-Note: When the instance of your database is removed, all data are lost.
+- On Query tab, type: **CREATE DABATASE proffy;**
+- Now that you have a database, you can go to the step **Modifying the scripts**.
+- Note: When the container instance of your database is removed, all data is lost.
 
-I'm using pgAdmin 4 (it's faster and lighter than Beekeper) on Ubuntu, and Beekeeper sometimes, but you can use another one. 
-Open this and create a database with a name you want.
+#### Configuring database locally 
+
+If you have postgres installed locally, you can use pgAdmin 4 (it's faster and lighter than Beekeeper to run on Ubuntu) to manage the database configuration. All you gotta do is create a database (you can use psql) and go to pgAdmin 4 to add a server and stablish a connection to your local network postgres.
+
+### Setting environment variables
 
 Open the folder you've just clonned and create a '.env' file on the root of the project. Copy the environment variables from '.env.example' and paste inside the '.env' file you've just created.
 Fill the variables with the data information about the database you created.
