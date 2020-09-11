@@ -64,7 +64,7 @@ You're are going to fill the fields: Connection Type (Postgres), Host (localhost
 - Now that you have a database, you can go to the step **Modifying the scripts**.
 - Note: When the container instance of your database is removed, all data is lost.
 
-#### Configuring database locally 
+#### :computer: Configuring database locally 
 
 If you have postgres installed locally, you can use pgAdmin 4 (it's faster and lighter than Beekeeper to run on Ubuntu) to manage the database configuration. All you gotta do is create a database (you can use psql) and go to pgAdmin 4 to add a server and stablish a connection to your local network postgres.
 
