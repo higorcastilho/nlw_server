@@ -60,7 +60,7 @@ Now, you gotta have a database client compatible with Postgres.
 
 #### Client for Docker
 
-Beekeeper might be a good choice. But you can use another one. 
+Beekeeper might be a good choice, but you can use another one. 
 Using the following configuration: 
 
 ```
