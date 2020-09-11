@@ -27,7 +27,13 @@ Node version used here is v14.8.0 and npm v6.14.7
 - run git clone
 - npm install
 
-- The SGBD used is Postgres. Using docker, you can run the bellow code to create an instance of a database in your machine, making this avaiable on port 5432:
+### Configuring the database
+
+- The SGBD used is Postgres. You can configure it either using a container, or using a local database.
+
+#### Using Docker
+
+Using docker, you can run the bellow code to create an instance of a database in your machine, making this avaiable on port 5432:
 
 ```
 docker run --name <container name> -e POSTGRES_PASSWORD=<password> -p <the port to access the container from your machine>:5432 -d postgres
@@ -47,10 +53,27 @@ This is gonna kill any process on 5432 port, making this avaiable for you. And i
 sudo docker container rm <the id of the container you want to remove>
 ```
 
-Now, running 'docker ps', you're gonna see your container nlw running up.
+Running 'docker ps', you're gonna see your container nlw running up.
 
 ------------------------------------------------
-Now, you gotta have a database client compatible with Postgres. I'm using pgAdmin 4 (it's faster and lighter than Beekeper) on Ubuntu, and Beekeeper sometimes, but you can use another one. 
+Now, you gotta have a database client compatible with Postgres.
+
+#### Client for Docker
+
+Beekeeper might be a good choice. But you can use another one. 
+Using this configuration: 
+
+```
+docker run --name nlw -e POSTGRES_PASSWORD=123456 -p 5432:5432 -d postgres
+```
+
+You're are going to fill the fields: Connection Type (Postgres), Host (localhost), Port (5432), User (postgres) and Password (123456).
+
+On Query tab, type: **CREATE DABATASE proffy;**
+Now that you have a database, you can go to the step **Running the migratiob**.
+Note: When the instance of your database is removed, all data are lost.
+
+I'm using pgAdmin 4 (it's faster and lighter than Beekeper) on Ubuntu, and Beekeeper sometimes, but you can use another one. 
 Open this and create a database with a name you want.
 
 Open the folder you've just clonned and create a '.env' file on the root of the project. Copy the environment variables from '.env.example' and paste inside the '.env' file you've just created.
