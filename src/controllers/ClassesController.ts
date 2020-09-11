@@ -128,26 +128,33 @@ export default class ClassesController {
 		try {
 			
 			const insertedClassesIds = await ClassesRepository.createClasses(subject, cost, id)
-			const class_id = insertedClassesIds[0]
+			
+			if (insertedClassesIds < 1) {
+				throw new Error('Class already exists')
+				
+			} else {
 
+				const class_id = insertedClassesIds[0]
 
-			const classSchedule = schedule.map((scheduleItem: ScheduleItem) => {
-				return {
-					class_id,
-					week_day: scheduleItem.week_day,
-					from: convertHourToMinutes(scheduleItem.from),
-					to: convertHourToMinutes(scheduleItem.to)
-				}
-			})
+				const classSchedule = schedule.map((scheduleItem: ScheduleItem) => {
+					return {
+						class_id,
+						week_day: scheduleItem.week_day,
+						from: convertHourToMinutes(scheduleItem.from),
+						to: convertHourToMinutes(scheduleItem.to)
+					}
+				})
 
-			await ClassesRepository.createClassSchedule(classSchedule)
+				await ClassesRepository.createClassSchedule(classSchedule)
 
-			return res.status(201).send('Class successfuly created')
+				return res.status(201).send('Class successfuly created')
+			}
+
 
 		} catch(e) {
 
 			return res.status(400).json({
-				error: 'Unexpected error while creating new class'
+				error: 'Unexpected error while creating new class: ' + e.message
 			})
 		}
 	}
