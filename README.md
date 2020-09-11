@@ -14,16 +14,7 @@ The **source code repositories** can be found here:
 - [Presentation](https://github.com/higorcastilho/next_level_week_2)
 - [Front-end](https://github.com/higorcastilho/nlw_web)
 
-### :hammer: Tools
-
--  [Typescript](https://www.typescriptlang.org/)
-
-
-### :dart: New Features
-
-The **[challenge](https://www.notion.so/Vers-o-2-0-Proffy-eefca1b981694cd0a895613bc6235970)** now is to add new features to this app. I've been adding some of them on web version: 
-
-Node version used here is v14.8.0 and npm v6.14.7
+### Node version used here is v14.8.0 and npm v6.14.7
 - run git clone
 - npm install
 
@@ -99,5 +90,4 @@ That's all. Now you're all set to run the migration!
 ```
 npm run knex:migrate
 ```
-
 Now, run npm start, go ahead and test this API with your preferred API testing tool :) 
