@@ -61,7 +61,7 @@ Now, you gotta have a database client compatible with Postgres.
 #### Client for Docker
 
 Beekeeper might be a good choice. But you can use another one. 
-Using this configuration: 
+Using the following configuration: 
 
 ```
 docker run --name nlw -e POSTGRES_PASSWORD=123456 -p 5432:5432 -d postgres
