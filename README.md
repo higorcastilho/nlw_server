@@ -58,11 +58,11 @@ Fill the variables with the data information about the database you created.
 
 ------------------------------------------------
 The scripts on package.json inside this repository is how it's meant to be on production. So, you'll gotta change this to the following to run the migrations on your computer:
-{
-"start": "tsnd --transpile-only --ignore-watch node_modules --respawn src/server.ts",
-"knex:migrate": "knex --knexfile knexfile.ts migrate:latest",
-"knex:rollback": "knex --knexfile knexfile.ts migrate:rollback" 
-}
+- {
+- "start": "tsnd --transpile-only --ignore-watch node_modules --respawn src/server.ts",
+- "knex:migrate": "knex --knexfile knexfile.ts migrate:latest",
+- "knex:rollback": "knex --knexfile knexfile.ts migrate:rollback" 
+- }
 You'll also have to go to **tsconfig.json** file and comment the 17 line (add //) in front of "outDir": "./dist".
 
 That's all. Now you can run the migration!
