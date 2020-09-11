@@ -63,7 +63,7 @@ The scripts on package.json inside this repository is how it's meant to be on pr
 - "knex:migrate": "knex --knexfile knexfile.ts migrate:latest",
 - "knex:rollback": "knex --knexfile knexfile.ts migrate:rollback" 
 - }
-You'll also have to go to **tsconfig.json** file and comment the 17 line (add //) in front of "outDir": "./dist".
+- You'll also have to go to **tsconfig.json** file and comment the 17 line (add //) in front of "outDir": "./dist".
 
 That's all. Now you can run the migration!
 
