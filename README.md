@@ -22,7 +22,7 @@ The **source code repositories** can be found here:
 
 - The SGBD used is Postgres. You can configure it either using a container, or using a local database.
 
-#### Using Docker
+#### :whale2: Using Docker
 
 Using docker, you can run the bellow code to create an instance of a database in your machine, making this avaiable on port 5432:
 
