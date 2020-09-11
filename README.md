@@ -14,11 +14,11 @@ The **source code repositories** can be found here:
 - [Presentation](https://github.com/higorcastilho/next_level_week_2)
 - [Front-end](https://github.com/higorcastilho/nlw_web)
 
-### Node version used here is v14.8.0 and npm v6.14.7
+### :wrench: Node version used here is v14.8.0 and npm v6.14.7
 - run git clone
 - npm install
 
-### Configuring the database
+### :floppy_disk: Configuring the database
 
 - The SGBD used is Postgres. You can configure it either using a container, or using a local database.
 
