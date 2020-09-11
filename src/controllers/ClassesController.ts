@@ -93,22 +93,20 @@ export default class ClassesController {
 			try {
 
 				const timeInMinutes = convertHourToMinutes(filters.time as string)
-
 				results.results = await ClassesRepository.classesFilter(filters.week_day, timeInMinutes, filters.subject, limit, startIndex)
-				
 				const allClasses = await ClassesRepository.numOfClassesFilter(filters.week_day, timeInMinutes, filters.subject)
 				results.total = allClasses.length.toString()
+
 				return results
 
 			} catch (err) {
 				res.status(500).json({ message: err.message })
 			}
 		}
-
 		if (!filters.week_day || !filters.subject || !filters.time) {
-
 			const paginated = await paginatedResults()
 			res.json(paginated)
+
 		} else {
 			const paginatedFilter = await paginatedResultsFilter()
 			res.json(paginatedFilter) 
