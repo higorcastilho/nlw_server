@@ -53,7 +53,7 @@ This is gonna kill any process on 5432 port, making this avaiable for you. And i
 sudo docker container rm <the id of the container you want to remove>
 ```
 
-Running 'docker ps', you're gonna see your container nlw running up.
+Running 'docker ps', you're gonna see your container **nlw** running up.
 
 ------------------------------------------------
 Now, you gotta have a database client compatible with Postgres.
