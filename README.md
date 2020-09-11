@@ -16,7 +16,7 @@ The **source code repositories** can be found here:
 
 ### :wrench: Node version used here is v14.8.0 and npm v6.14.7
 - Run **git clone**
-- **npm install**
+- Run **npm install**
 ### Configuring and running
 - Got o the root folder and browse to src/services/http.ts
 - Change **API_HOST** to **API_HOST_DEV** 
