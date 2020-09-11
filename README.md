@@ -4,7 +4,7 @@
 </h1>
 
 <p align="center">
-  <img alt="Dveloped by Rocketseat" src="https://img.shields.io/badge/developed%20by-Rocketseat-blueviolet"><br/>
+  <img alt="Developed by Rocketseat" src="https://img.shields.io/badge/developed%20by-Rocketseat-blueviolet"><br/>
 </p>
 
 <p align="center">
