@@ -52,6 +52,8 @@ export default class LoginsController {
 			const token = crypto.randomBytes(20).toString('hex')
 
 			const now =  new Date()
+			const options = { year: 'numeric', month: '2-digit', day: '2-digit' }
+			now.toLocaleDateString('pt-BR', options)
 			now.setHours(now.getHours() + 1)
 
 			await LoginsRepository.forgotPassword(account[0].id, token, now)
@@ -73,16 +75,21 @@ export default class LoginsController {
 
 			const account = await LoginsRepository.verifyIfEmailExists(email)
 			if (!account) {
+
 				return res.status(400).send({ error: 'User not found' })
 			} 
 
 			if (account[0].password_reset_token !== token) {
+				
 				return res.status(400).send({ error: 'Invalid token.' })
 			}
 
 			const now = new Date()
+			const options = { year: 'numeric', month: '2-digit', day: '2-digit' }
+			now.toLocaleDateString('pt-BR', options)
 
 			if (now > account[0].password_reset_expires) {
+	
 				return res.status(400).send({ error: 'Token expired.' })
 			}
 
