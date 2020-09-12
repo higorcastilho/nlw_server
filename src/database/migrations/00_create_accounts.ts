@@ -9,7 +9,7 @@ export async function up(knex: Knex) {
 		table.string('password').notNullable()
 
 		table.string('password_reset_token')
-		table.date('password_reset_expires')
+		table.string('password_reset_expires')
 	})
 }
 

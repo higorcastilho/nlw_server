@@ -51,12 +51,9 @@ export default class LoginsController {
 
 			const token = crypto.randomBytes(20).toString('hex')
 
-			const now =  new Date()
-			const options = { year: 'numeric', month: '2-digit', day: '2-digit' }
-			now.toLocaleDateString('pt-BR', options)
-			now.setHours(now.getHours() + 1)
-
-			await LoginsRepository.forgotPassword(account[0].id, token, now)
+			const now =  new Date().getTime()
+	
+			await LoginsRepository.forgotPassword(account[0].id, token, (now + 3600000))
 
 			sendMail(email, token)
 
@@ -84,12 +81,9 @@ export default class LoginsController {
 				return res.status(400).send({ error: 'Invalid token.' })
 			}
 
-			const now = new Date()
-			const options = { year: 'numeric', month: '2-digit', day: '2-digit' }
-			now.toLocaleDateString('pt-BR', options)
-
-			if (now > account[0].password_reset_expires) {
-	
+			const now = new Date().getTime()
+			
+			if (now > parseInt(account[0].password_reset_expires)) {
 				return res.status(400).send({ error: 'Token expired.' })
 			}
 
