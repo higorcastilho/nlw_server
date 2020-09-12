@@ -77,7 +77,7 @@ Fill the variables with the data information about the database you created.
 
 The scripts on package.json inside this repository is how it's meant to be on production. So, you'll gotta change this to the following to run the migrations on your computer:
 
--from this:
+- from this:
 
 - {
 - "start": "node dist/src/server.js"
@@ -87,7 +87,7 @@ The scripts on package.json inside this repository is how it's meant to be on pr
 - "build": "tsc"
 - }
 
--To this:
+- to this:
 
 - {
 - "start": "tsnd --transpile-only --ignore-watch node_modules --respawn src/server.ts",
