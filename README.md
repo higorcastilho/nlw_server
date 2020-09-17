@@ -10,7 +10,9 @@
 ### :hearts: About
 
 **Proffy** was a project developed from 03/08 to 07/08 by [Rocketseat](https://rocketseat.com.br/) at second Next Level Week edition. It's a web app made to connect teachers and students who love to share and learn about several topics.
-The **source code repositories** can be found here:
+The **source code repositories** and the **deployed website** can be found here:
+
+- [Website](https://ecstatic-rosalind-d9b9bc.netlify.app/) :arrow_upper_right:
 - [Presentation](https://github.com/higorcastilho/next_level_week_2)
 - [Front-end](https://github.com/higorcastilho/nlw_web)
 
