@@ -17,8 +17,8 @@ The **source code repositories** and the **deployed website** can be found here:
 - [Front-end](https://github.com/higorcastilho/nlw_web)
 
 ### :wrench: Node version used here is v14.8.0 and npm v6.14.7
-- run git clone
-- npm install
+- git clone
+- run npm install
 
 ### :floppy_disk: Configuring the database
 
